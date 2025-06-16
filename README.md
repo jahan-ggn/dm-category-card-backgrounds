@@ -1,4 +1,4 @@
-# **Plugin Name** Plugin
+# **Dm Category Card Backgrounds** Plugin
 
 **Plugin Summary**
 

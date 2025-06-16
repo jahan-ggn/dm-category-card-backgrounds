@@ -3,7 +3,7 @@ en:
     admin:
       site_settings:
         categories:
-          TODO_plugin_name: "Plugin Name"
+          dm_category_card_backgrounds: "Dm Category Card Backgrounds"
   js:
-    discourse_plugin_name:
+    dm_category_card_backgrounds:
       placeholder: placeholder
