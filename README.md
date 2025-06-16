@@ -1,4 +1,4 @@
-# Dm Category Card Backgrounds Plugin
+# DM Category Card Backgrounds Plugin
 
 **Plugin Summary**
 
