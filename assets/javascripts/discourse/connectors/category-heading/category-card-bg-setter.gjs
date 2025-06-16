@@ -22,10 +22,12 @@ export default class CategoryCardBgSetter extends Component {
         "--category-card-background-image",
         `url('${url}')`
       );
+      document.body.classList.add("category-card-bg-active");
     } else {
       document.documentElement.style.removeProperty(
         "--category-card-background-image"
       );
+      document.body.classList.remove("category-card-bg-active");
     }
   }
 }
