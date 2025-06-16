@@ -1,10 +1,9 @@
 body.category.category-card-bg-active {
   .list-controls {
     .container {
-      background-image: var(--category-card-background-image);
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
-      background-position: center;
+      background-image: var(--category-card-background-image) !important;
+      background-size: 100% 100% !important;
+      background-repeat: no-repeat !important;
 
       .category-heading {
         visibility: hidden;
