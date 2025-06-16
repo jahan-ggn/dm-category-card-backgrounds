@@ -1,5 +1,5 @@
-# **Dm Category Card Backgrounds** Plugin
+# Dm Category Card Backgrounds Plugin
 
 **Plugin Summary**
 
-For more information, please see: **url to meta topic**
+This plugin allows admins to upload and manage custom background images for category info cards in Discourse. It enhances the visual presentation of categories by supporting personalized imagery, making the community more engaging and branded.

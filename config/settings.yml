@@ -1,4 +1,4 @@
-dm_category_card_backgrounds:
+plugins:
   dm_category_card_backgrounds_enabled:
     default: false
     client: true
