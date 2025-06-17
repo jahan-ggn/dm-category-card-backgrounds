@@ -29,7 +29,20 @@ after_initialize do
       object.custom_fields["category_card_bg_image_dark"]
     end
 
-    add_to_serializer(:basic_category, :include_category_card_bg_image_light?) { true }
-    add_to_serializer(:basic_category, :include_category_card_bg_image_dark?) { true }
+    add_to_serializer(
+      :basic_category,
+      :category_card_bg_image_light,
+      include_condition: -> { object.custom_fields["category_card_bg_image_light"].present? }
+    ) do
+      object.custom_fields["category_card_bg_image_light"]
+    end
+
+    add_to_serializer(
+      :basic_category,
+      :category_card_bg_image_dark,
+      include_condition: -> { object.custom_fields["category_card_bg_image_dark"].present? }
+    ) do
+      object.custom_fields["category_card_bg_image_dark"]
+    end
   end
 end
