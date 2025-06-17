@@ -1,0 +1,13 @@
+en_GB:
+  admin_js:
+    admin:
+      site_settings:
+        categories:
+          dm_category_card_backgrounds: "DM Category Card Backgrounds"
+  js:
+    dm_category_card_backgrounds:
+      title: DM Category Card Backgrounds
+      admin_navigation: DM Category Card Backgrounds
+    category_card:
+      light_bg_image: "Light Mode Category Card Background Image"
+      dark_bg_image: "Dark Mode Category Card Background Image"
