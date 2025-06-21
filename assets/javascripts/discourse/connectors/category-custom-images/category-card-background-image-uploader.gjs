@@ -5,70 +5,70 @@ import UppyImageUploader from "discourse/components/uppy-image-uploader";
 import { i18n } from "discourse-i18n";
 
 export default class CategoryCardBackgroundUploader extends Component {
+  @tracked categoryCustomFields = this.args.category.custom_fields;
+
   @tracked
   lightBackgroundUrl =
-    this.args.category.custom_fields?.category_card_bg_image_light ?? "";
+    this.categoryCustomFields.category_card_bg_image_light ?? "";
 
   @tracked
   darkBackgroundUrl =
-    this.args.category.custom_fields?.category_card_bg_image_dark ?? "";
+    this.categoryCustomFields.category_card_bg_image_dark ?? "";
 
   @tracked
   mobileLightBackgroundUrl =
-    this.args.category.custom_fields?.category_card_bg_image_light_mobile ?? "";
+    this.categoryCustomFields.category_card_bg_image_light_mobile ?? "";
 
   @tracked
   mobileDarkBackgroundUrl =
-    this.args.category.custom_fields?.category_card_bg_image_dark_mobile ?? "";
+    this.categoryCustomFields.category_card_bg_image_dark_mobile ?? "";
 
   @action
   onLightUploadComplete(upload) {
     this.lightBackgroundUrl = upload.url;
-    this.args.category.custom_fields.category_card_bg_image_light = upload.url;
+    this.categoryCustomFields.category_card_bg_image_light = upload.url;
   }
 
   @action
   onLightUploadDelete() {
     this.lightBackgroundUrl = "";
-    this.args.category.custom_fields.category_card_bg_image_light = "";
+    this.categoryCustomFields.category_card_bg_image_light = "";
   }
 
   @action
   onDarkUploadComplete(upload) {
     this.darkBackgroundUrl = upload.url;
-    this.args.category.custom_fields.category_card_bg_image_dark = upload.url;
+    this.categoryCustomFields.category_card_bg_image_dark = upload.url;
   }
 
   @action
   onDarkUploadDelete() {
     this.darkBackgroundUrl = "";
-    this.args.category.custom_fields.category_card_bg_image_dark = "";
+    this.categoryCustomFields.category_card_bg_image_dark = "";
   }
 
   @action
   onMobileLightUploadComplete(upload) {
     this.mobileLightBackgroundUrl = upload.url;
-    this.args.category.custom_fields.category_card_bg_image_light_mobile =
-      upload.url;
+    this.categoryCustomFields.category_card_bg_image_light_mobile = upload.url;
   }
 
   @action
   onMobileLightUploadDelete() {
     this.mobileLightBackgroundUrl = "";
-    this.args.category.custom_fields.category_card_bg_image_light_mobile = "";
+    this.categoryCustomFields.category_card_bg_image_light_mobile = "";
   }
 
   @action
   onMobileDarkUploadComplete(upload) {
     this.mobileDarkBackgroundUrl = upload.url;
-    this.args.category.custom_fields.category_card_bg_image_dark_mobile =
-      upload.url;
+    this.categoryCustomFields.category_card_bg_image_dark_mobile = upload.url;
   }
 
   @action
   onMobileDarkUploadDelete() {
     this.mobileDarkBackgroundUrl = "";
-    this.args.category.custom_fields.category_card_bg_image_dark_mobile = "";
+    this.categoryCustomFields.category_card_bg_image_dark_mobile = "";
   }
 
   get backgroundConfigs() {
