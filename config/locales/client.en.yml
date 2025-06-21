@@ -11,3 +11,5 @@ en:
     category_card:
       light_bg_image: "Light Mode Category Card Background Image"
       dark_bg_image: "Dark Mode Category Card Background Image"
+      light_bg_image_mobile: "Light Mode Category Card Background Image (Mobile)"
+      dark_bg_image_mobile: "Dark Mode Category Card Background Image (Mobile)"

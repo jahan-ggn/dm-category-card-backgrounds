@@ -17,32 +17,25 @@ require_relative "lib/dm_category_card_backgrounds/engine"
 register_asset "stylesheets/common/common.scss"
 
 after_initialize do
-  if SiteSetting.dm_category_card_backgrounds_enabled
-    register_preloaded_category_custom_fields "category_card_bg_image_light"
-    register_preloaded_category_custom_fields "category_card_bg_image_dark"
+  %w[
+    category_card_bg_image_light
+    category_card_bg_image_dark
+    category_card_bg_image_light_mobile
+    category_card_bg_image_dark_mobile
+  ].each do |field|
+    register_preloaded_category_custom_fields field
+  end
 
-    add_to_serializer(:basic_category, :category_card_bg_image_light) do
-      object.custom_fields["category_card_bg_image_light"]
-    end
-
-    add_to_serializer(:basic_category, :category_card_bg_image_dark) do
-      object.custom_fields["category_card_bg_image_dark"]
-    end
-
-    add_to_serializer(
-      :basic_category,
-      :category_card_bg_image_light,
-      include_condition: -> { object.custom_fields["category_card_bg_image_light"].present? }
-    ) do
-      object.custom_fields["category_card_bg_image_light"]
-    end
-
-    add_to_serializer(
-      :basic_category,
-      :category_card_bg_image_dark,
-      include_condition: -> { object.custom_fields["category_card_bg_image_dark"].present? }
-    ) do
-      object.custom_fields["category_card_bg_image_dark"]
+  %w[
+    category_card_bg_image_light
+    category_card_bg_image_dark
+    category_card_bg_image_light_mobile
+    category_card_bg_image_dark_mobile
+  ].each do |field|
+    add_to_serializer(:basic_category, field.to_sym, include_condition: -> {
+      SiteSetting.dm_category_card_backgrounds_enabled && object.custom_fields[field].present?
+    }) do
+      object.custom_fields[field]
     end
   end
 end
