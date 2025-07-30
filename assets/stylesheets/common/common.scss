@@ -2,8 +2,10 @@ body.category.category-card-bg-active {
   .list-controls {
     .container {
       background-image: var(--category-card-background-image) !important;
-      background-size: 100% 100% !important;
-      background-repeat: no-repeat !important;
+      // background-size: 100% 100% !important;
+      // background-repeat: no-repeat !important;
+      background-size: cover !important;
+      background-position: center center !important;
 
       .category-heading {
         visibility: hidden;

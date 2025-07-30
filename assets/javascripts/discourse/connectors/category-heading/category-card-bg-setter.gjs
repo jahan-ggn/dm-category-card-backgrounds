@@ -6,25 +6,22 @@ export default class CategoryCardBgSetter extends Component {
 
   constructor() {
     super(...arguments);
-
     const isDarkMode =
       getComputedStyle(document.body)
         .getPropertyValue("--scheme-type")
         .trim() === "dark";
-
     const isMobile = this.site.isMobileDevice;
-
-    const customFields = this.args?.outletArgs?.category?.custom_fields || {};
+    const category = this.args?.outletArgs?.category || {};
     let url = "";
 
     if (isDarkMode) {
       url = isMobile
-        ? customFields.category_card_bg_image_dark_mobile
-        : customFields.category_card_bg_image_dark;
+        ? category.category_card_bg_image_dark_mobile
+        : category.category_card_bg_image_dark;
     } else {
       url = isMobile
-        ? customFields.category_card_bg_image_light_mobile
-        : customFields.category_card_bg_image_light;
+        ? category.category_card_bg_image_light_mobile
+        : category.category_card_bg_image_light;
     }
 
     if (url) {

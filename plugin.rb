@@ -12,30 +12,37 @@ module ::DmCategoryCardBackgrounds
   PLUGIN_NAME = "dm-category-card-backgrounds"
 end
 
-require_relative "lib/dm_category_card_backgrounds/engine"
-
 register_asset "stylesheets/common/common.scss"
 
 after_initialize do
-  %w[
+  # Register all custom fields for preloading
+  bg_fields = %w[
     category_card_bg_image_light
     category_card_bg_image_dark
     category_card_bg_image_light_mobile
     category_card_bg_image_dark_mobile
-  ].each do |field|
+  ]
+
+  bg_fields.each do |field|
     register_preloaded_category_custom_fields field
   end
 
-  %w[
-    category_card_bg_image_light
-    category_card_bg_image_dark
-    category_card_bg_image_light_mobile
-    category_card_bg_image_dark_mobile
-  ].each do |field|
+  bg_fields.each do |field|
     add_to_serializer(:basic_category, field.to_sym, include_condition: -> {
       SiteSetting.dm_category_card_backgrounds_enabled && object.custom_fields[field].present?
     }) do
-      object.custom_fields[field]
+      upload_id = object.custom_fields[field]
+      upload = Upload.find_by(id: upload_id)
+      upload&.url
+    end
+  end
+
+  if respond_to?(:register_upload_in_use)
+    register_upload_in_use do |upload|
+      CategoryCustomField.where(
+        name: bg_fields,
+        value: upload.id.to_s
+      ).exists?
     end
   end
 end

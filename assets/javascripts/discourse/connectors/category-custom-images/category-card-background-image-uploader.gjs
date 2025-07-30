@@ -8,25 +8,23 @@ export default class CategoryCardBackgroundUploader extends Component {
   @tracked categoryCustomFields = this.args.category.custom_fields;
 
   @tracked
-  lightBackgroundUrl =
-    this.categoryCustomFields.category_card_bg_image_light ?? "";
+  lightBackgroundUrl = this.args.category.category_card_bg_image_light ?? "";
 
   @tracked
-  darkBackgroundUrl =
-    this.categoryCustomFields.category_card_bg_image_dark ?? "";
+  darkBackgroundUrl = this.args.category.category_card_bg_image_dark ?? "";
 
   @tracked
   mobileLightBackgroundUrl =
-    this.categoryCustomFields.category_card_bg_image_light_mobile ?? "";
+    this.args.category.category_card_bg_image_light_mobile ?? "";
 
   @tracked
   mobileDarkBackgroundUrl =
-    this.categoryCustomFields.category_card_bg_image_dark_mobile ?? "";
+    this.args.category.category_card_bg_image_dark_mobile ?? "";
 
   @action
   onLightUploadComplete(upload) {
     this.lightBackgroundUrl = upload.url;
-    this.categoryCustomFields.category_card_bg_image_light = upload.url;
+    this.categoryCustomFields.category_card_bg_image_light = upload.id;
   }
 
   @action
@@ -38,7 +36,7 @@ export default class CategoryCardBackgroundUploader extends Component {
   @action
   onDarkUploadComplete(upload) {
     this.darkBackgroundUrl = upload.url;
-    this.categoryCustomFields.category_card_bg_image_dark = upload.url;
+    this.categoryCustomFields.category_card_bg_image_dark = upload.id;
   }
 
   @action
@@ -50,7 +48,7 @@ export default class CategoryCardBackgroundUploader extends Component {
   @action
   onMobileLightUploadComplete(upload) {
     this.mobileLightBackgroundUrl = upload.url;
-    this.categoryCustomFields.category_card_bg_image_light_mobile = upload.url;
+    this.categoryCustomFields.category_card_bg_image_light_mobile = upload.id;
   }
 
   @action
@@ -62,7 +60,7 @@ export default class CategoryCardBackgroundUploader extends Component {
   @action
   onMobileDarkUploadComplete(upload) {
     this.mobileDarkBackgroundUrl = upload.url;
-    this.categoryCustomFields.category_card_bg_image_dark_mobile = upload.url;
+    this.categoryCustomFields.category_card_bg_image_dark_mobile = upload.id;
   }
 
   @action
@@ -110,6 +108,7 @@ export default class CategoryCardBackgroundUploader extends Component {
 
   <template>
     {{#each this.backgroundConfigs as |bg|}}
+      {{log bg}}
       <section class="field category-card-background">
         <label>{{i18n bg.label}}</label>
         <UppyImageUploader
