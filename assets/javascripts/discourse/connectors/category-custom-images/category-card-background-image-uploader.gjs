@@ -108,7 +108,6 @@ export default class CategoryCardBackgroundUploader extends Component {
 
   <template>
     {{#each this.backgroundConfigs as |bg|}}
-      {{log bg}}
       <section class="field category-card-background">
         <label>{{i18n bg.label}}</label>
         <UppyImageUploader
